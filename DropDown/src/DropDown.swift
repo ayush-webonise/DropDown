@@ -481,7 +481,7 @@ extension DropDown {
 
 		tableView.isScrollEnabled = layout.offscreenHeight > 0
 
-		DispatchQueue.main.async { [unowned self] in
+		DispatchQueue.main.async { [weak self] in
 			self.tableView.flashScrollIndicators()
 		}
 
@@ -771,7 +771,7 @@ extension DropDown {
 			withDuration: animationduration,
 			delay: 0,
 			options: animationEntranceOptions,
-			animations: { [unowned self] in
+			animations: { [weak self] in
 				self.setShowedState()
 			},
 			completion: nil)
@@ -800,10 +800,10 @@ extension DropDown {
 			withDuration: animationduration,
 			delay: 0,
 			options: animationExitOptions,
-			animations: { [unowned self] in
+			animations: { [weak self] in
 				self.setHiddentState()
 			},
-			completion: { [unowned self] finished in
+			completion: { [weak self] finished in
 				self.isHidden = true
 				self.removeFromSuperview()
 			})
